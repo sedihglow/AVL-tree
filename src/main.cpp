@@ -6,7 +6,8 @@ using namespace std;
 
 int main()
 {
-    class node tn(32);
+    avl_tree tree;
 
-    return 0; 
+    tree.add_data(50);
+    tree.display();
 }

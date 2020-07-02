@@ -4,19 +4,23 @@
 #include <iostream>
 using namespace std;
 
-class node {
+class avl_node {
     public:
-        node();
-        node(int data);
-        ~node();
+        avl_node();
+        avl_node(int data);
+        ~avl_node();
 
         int add_data(int data);
+        int* get_data();
+        avl_node*& get_right();
+        avl_node*& get_left();
+        
 
     private:
         int *mdata;
-        node *mright;
-        node *mleft;
-        node *mparent;
+        int *mheight;
+        avl_node *mright;
+        avl_node *mleft;
 };
 
 class avl_tree 
@@ -24,8 +28,13 @@ class avl_tree
     public:
         avl_tree();
         ~avl_tree();
+        int add_data(int data);
+
+        void display();
     private:
-        node *root;
-        
+        avl_node* insert_data(avl_node *&node, int data);
+        void display(avl_node *node);
+
+        avl_node *mroot;
 };
 #endif
