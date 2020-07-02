@@ -15,6 +15,10 @@ class avl_node {
         avl_node*& get_right();
         avl_node*& get_left();
         
+        int*& get_height();
+        int get_left_height_data();
+        int get_right_height_data();
+        
 
     private:
         int *mdata;
@@ -33,7 +37,7 @@ class avl_tree
         void display();
     private:
         avl_node* insert_data(avl_node *&node, int data);
-        void display(avl_node *node);
+        void in_order(avl_node *node);
 
         avl_node *mroot;
 };

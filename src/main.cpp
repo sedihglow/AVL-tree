@@ -10,5 +10,8 @@ int main()
 
     tree.add_data(50);
     tree.add_data(25);
+    tree.add_data(75);
+    tree.add_data(65);
+    tree.add_data(35);
     tree.display();
 }

@@ -55,8 +55,6 @@ int* avl_node::get_data()
     return mdata;
 }
 
-
-
 avl_node*& avl_node::get_right()
 {
     return mright;
@@ -66,7 +64,20 @@ avl_node*& avl_node::get_left()
     return mleft;
 }
 
+int*& avl_node::get_height()
+{
+    return mheight;
+}
 
+int avl_node::get_left_height_data()
+{
+    return (mleft) ? *mleft->get_height() : 0;
+
+}
+int avl_node::get_right_height_data()
+{
+    return (mright) ? *mright->get_height() : 0;
+}
 
 
             /* avl_tree functions */
@@ -108,21 +119,24 @@ avl_node* avl_tree::insert_data(avl_node *&node, int data)
        node->get_left() = insert_data(node->get_left(), data);
 
     }
+    
+    *node->get_height() = 1 + max(node->get_left_height_data(), 
+                                  node->get_right_height_data());
     return node;
 }
 
 
 void avl_tree::display()
 {
-    display(mroot);
+    in_order(mroot);
 }
 
-void avl_tree::display(avl_node *node)
+void avl_tree::in_order(avl_node *node)
 {
     if (!node)
         return;
 
-    display(node->get_right());
-    cout << *node->get_data() << endl;
-    display(node->get_left());
+    in_order(node->get_left());
+    cout << *node->get_data() << " " << *node->get_height() << endl;
+    in_order(node->get_right());
 }
