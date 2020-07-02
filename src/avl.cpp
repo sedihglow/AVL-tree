@@ -101,11 +101,11 @@ avl_node* avl_tree::insert_data(avl_node *&node, int data)
             exit(EXIT_FAILURE);
         }
     } else if (data >= *node->get_data()) {
-        node = insert_data(node->get_right(), data);
+        node->get_right() = insert_data(node->get_right(), data);
 
 
     } else { // data < *node->get_data()
-       node = insert_data(node->get_left(), data);
+       node->get_left() = insert_data(node->get_left(), data);
 
     }
     return node;
