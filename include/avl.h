@@ -18,7 +18,10 @@ class avl_node {
         int*& get_height();
         int get_left_height_data();
         int get_right_height_data();
-        
+        int get_left_left_height_data();
+        int get_left_right_height_data();
+        int get_right_left_height_data();
+        int get_right_right_height_data();
 
     private:
         int *mdata;
@@ -33,11 +36,21 @@ class avl_tree
         avl_tree();
         ~avl_tree();
         int add_data(int data);
+        bool check_avl();
 
         void display();
     private:
         avl_node* insert_data(avl_node *&node, int data);
         void in_order(avl_node *node);
+
+        void rebalance(avl_node *&node);
+        avl_node* left_rotate(avl_node *&node);
+        avl_node* right_rotate(avl_node *&node);
+        avl_node* right_left_rotate(avl_node *&node);
+        avl_node* left_right_rotate(avl_node *&node);
+
+        bool avl_check(avl_node *node);
+
 
         avl_node *mroot;
 };
